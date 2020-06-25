@@ -136,6 +136,8 @@
 		<false/>
 		<key>StrictHibernate</key>
 		<true/>
+		<key>Timeout</key>
+		<integer>3</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
 	</dict>
@@ -186,7 +188,7 @@
 					<key>Type</key>
 					<string>OSX</string>
 					<key>Volume</key>
-					<string>A580D29C-CC48-4DB1-B56D-83846BCD1E80</string>
+					<string>2ACC14DA-FADF-4159-809C-77F20139B31D</string>
 					<key>VolumeType</key>
 					<string>Internal</string>
 				</dict>
@@ -208,7 +210,7 @@
 					<key>Type</key>
 					<string>OSXRecovery</string>
 					<key>Volume</key>
-					<string>A580D29C-CC48-4DB1-B56D-83846BCD1E80</string>
+					<string>2ACC14DA-FADF-4159-809C-77F20139B31D</string>
 					<key>VolumeType</key>
 					<string>Internal</string>
 				</dict>
@@ -243,7 +245,7 @@
 		<key>ShowOptimus</key>
 		<false/>
 		<key>Theme</key>
-		<string>Andresha</string>
+		<string>Catalina</string>
 		<key>Timezone</key>
 		<string>7</string>
 	</dict>

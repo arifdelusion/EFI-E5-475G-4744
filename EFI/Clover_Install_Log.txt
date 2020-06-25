@@ -1,48 +1,48 @@
 
-Clover EFI installer log - Mon May 25 14:40:38 WIB 2020
+Clover EFI installer log - Tue May 26 03:41:35 WIB 2020
 Installer version: r5118 (commit: 6529f815d) EFI bootloader
 ======================================================
 /dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      GUID_partition_scheme                        *320.1 GB   disk0
-   1:                        EFI EFI                     209.7 MB   disk0s1
-   2:                 Apple_APFS Container disk2         319.7 GB   disk0s2
+   0:      GUID_partition_scheme                        *120.0 GB   disk0
+   1:                        EFI NO NAME                 500.2 MB   disk0s1
+   2:                 Linux Swap                         8.0 GB     disk0s2
+   3:           Linux Filesystem                         111.5 GB   disk0s3
 
 /dev/disk1 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      GUID_partition_scheme                        *120.0 GB   disk1
-   1:                        EFI NO NAME                 500.2 MB   disk1s1
-   2:                 Linux Swap                         8.0 GB     disk1s2
-   3:           Linux Filesystem                         111.5 GB   disk1s3
+   0:      GUID_partition_scheme                        *256.1 GB   disk1
+   1:                        EFI EFI                     209.7 MB   disk1s1
+   2:                 Apple_APFS Container disk2         255.7 GB   disk1s2
 
 /dev/disk2 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      APFS Container Scheme -                      +319.7 GB   disk2
-                                 Physical Store disk0s2
+   0:      APFS Container Scheme -                      +255.7 GB   disk2
+                                 Physical Store disk1s2
    1:                APFS Volume Macintosh SSD - Data    4.3 GB     disk2s1
-   2:                APFS Volume Preboot                 82.2 MB    disk2s2
+   2:                APFS Volume Preboot                 82.3 MB    disk2s2
    3:                APFS Volume Recovery                528.1 MB   disk2s3
-   4:                APFS Volume VM                      17.2 GB    disk2s4
+   4:                APFS Volume VM                      1.1 GB     disk2s4
    5:                APFS Volume Macintosh SSD           11.0 GB    disk2s5
 
-Target volume /Volumes/Macintosh SSD on disk2 is APFS on physical store disk0s2
+Target volume /Volumes/Macintosh SSD on disk2 is APFS on physical store disk1s2
 ======================================================
 Backing up EFI files
 
 No Active Partition
 
-Stage 0 - Writing boot0ss to /dev/rdisk0
-dd if=/dev/rdisk0 count=1 bs=512 of=/tmp/origMBR
+Stage 0 - Writing boot0ss to /dev/rdisk1
+dd if=/dev/rdisk1 count=1 bs=512 of=/tmp/origMBR
 cp /tmp/origMBR /tmp/newMBR
 dd if=//usr/standalone/i386/boot0ss of=/tmp/newMBR bs=440 count=1 conv=notrunc
-fdisk -f /tmp/newMBR -u -y /dev/rdisk0
+fdisk -f /tmp/newMBR -u -y /dev/rdisk1
 
-Stage 1 - Writing boot1f32 to /dev/rdisk0s1
-dd if=/dev/rdisk0s1 count=1 bs=512 of=/tmp/origbs
+Stage 1 - Writing boot1f32 to /dev/rdisk1s1
+dd if=/dev/rdisk1s1 count=1 bs=512 of=/tmp/origbs
 boot volume format is FAT32
 cp /tmp/boot1f32 /tmp/newbs
 dd if=/tmp/origbs of=/tmp/newbs skip=3 seek=3 bs=1 count=87 conv=notrunc
-dd if=/tmp/newbs of=/dev/rdisk0s1
+dd if=/tmp/newbs of=/dev/rdisk1s1
 
 Stage 2 - Written boot6 (x64) to /Volumes/ESP/boot
 
